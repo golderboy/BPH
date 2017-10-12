@@ -1,5 +1,5 @@
-<h1>การติดตั้ง Ionic</h1>
-<p>
+#การติดตั้ง Ionic
+
 1. ลง Node.js
 2. รันคำสั้ง ```bash  npm install ionic cornova -g ```
 3. ติดตั้ง Android Studio
@@ -7,7 +7,7 @@
 5. ANDROID_HOME =```bash C:\Users\ชื่อเครื่อง\AppData\Local\Android\sdk ```
 6. JAVA_HOME =```bash C:\Program Files\Java\jdk1.8.0_131 ```
 7. เพิ่ม PATH =```bash ;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools ```
-</p>
+
 #การติดตั้ง ปลั๊กอิน visual Studio Code
 1. เปิด visual Studio Code เพิ่มปลั๊กอิน 
 - Angular v4 TypeScript Snippets
