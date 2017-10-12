@@ -7,6 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DetailPageModule } from '../pages/detail/detail.module'; //imd
+import { TabsPageModule  } from '../pages/tabs/tabs.module';
+import { DashbordPageModule } from '../pages/dashbord/dashbord.module';
+import { SettingsPageModule } from '../pages/settings/settings.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -15,7 +19,10 @@ import { DetailPageModule } from '../pages/detail/detail.module'; //imd
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    DetailPageModule
+    DetailPageModule,
+    TabsPageModule,
+    DashbordPageModule,
+    SettingsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

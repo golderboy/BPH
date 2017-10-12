@@ -189,6 +189,23 @@
         <ion-input type="text" [value]="data.name" ></ion-input>
     </ion-item>
 
+การเลือกหน้าหลัก ให้ไปที่ src->app->app.component.ts
+1. แก้ไฟล์   export class MyApp {
+             rootPage:any = HomePage; เปลี่ยนเป็นหน้าที่เราต้องการ
+2. import หน้าเพจเข้า app.component.ts
+
+การสร้างแท๊ปเมนู
+1. รันคำสั่ง ionic g page Tabs
+2. ลบ code ในหน้า tabs.html ออกให้หมด
+3. เริ่มพิมพิพ์โค้ด 
+        <ion-tabs>
+        <ion-tab tabIcon="home" tabTitle="Home" [root]="tabHome"></ion-tab>
+        </ion-tabs>
+4. นำเข้าเพจที่จะให้ลิงค์ไปได้ที่ไฟล์ tabs.ts
+    import { HomePage } from '../home/home';
+
+
+
 Tip
 -https://www.materialui.co/ เว็บดูเทมเพลดสี
 -https://ionicframework.com/docs/components/ โค้ด ionic 
@@ -208,3 +225,4 @@ Tip
 - cordova platform remove ios
 - cordova platform update ios@latest
 - หรือ cordova platform add ios@latest
+
