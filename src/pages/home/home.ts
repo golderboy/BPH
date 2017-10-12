@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController,LoadingController  } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
+import { AvatarProvider } from '../../providers/avatar/avatar';
 
 @Component({
   selector: 'page-home',
@@ -12,6 +13,7 @@ export class HomePage {
   age = "20";
   sex:number;
   birth:Date;
+  avatars = [];
 
   xxx = ['AAA','BBB','CCC'];
   data = [
@@ -21,10 +23,14 @@ export class HomePage {
   ];
 
 
-  constructor(public navCtrl: NavController,public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController,public alertCtrl:AlertController
+    ,private avatarPovider: AvatarProvider,public loadingCtrl: LoadingController) {
 
   }
 
+  ionViewWillEnter(){
+    this.getAvatars();
+  }
 /*
   showMe(dd:any){
     let alert = this.alertCtrl.create({
@@ -38,5 +44,25 @@ export class HomePage {
   detail(dd:any){
     this.navCtrl.push(DetailPage,dd)
   }
+
+  async getAvatars(){
+    const loading = this.loadingCtrl.create({
+      content: "รอสักครู่...",
+    });
+
+    try {
+      this.avatars=[];
+
+      loading.present();
+      const resp = await this.avatarPovider.getAvatar();
+      this.avatars = resp.results;  
+      loading.dismiss();
+    } catch (error) {
+      loading.dismiss();
+    }
+
+
+
+}
 
 }

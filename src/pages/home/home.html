@@ -4,19 +4,18 @@
 <ion-header>
   <ion-navbar color="danger">
     <ion-title>
-      BPH เวอร์ชั่นทดสอบ
+        {{ app }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  Apps  {{ app }}
-  
+<ion-content padding> 
+<!-- 
 <ion-item>
   <ion-label floating>ชื่อ</ion-label>
   <ion-input type="text" [(ngModel)]="name" ></ion-input>
 </ion-item>
-<!--
+
 <ion-list>
   <ion-label floating>Test1</ion-label>
   <ion-item *ngFor="let f of xxx">
@@ -39,7 +38,7 @@
      <p> อายุ : {{ d.age }}</p>
     </button>
 </ion-list>
--->
+
 
 <ion-list>
     <ion-label>ลูกค้า</ion-label>
@@ -51,8 +50,18 @@
 
 <hr>
 <p>บันทึกข้อความ : <strong>{{ name }}</strong></p>
-
+-->
   <br>
+  <ion-list no-lines>
+    <button ion-item *ngFor="let a of avatars" (click)="detail(a)" >
+      <ion-avatar item-start>
+        <img [src]="a.picture.medium">
+      </ion-avatar>
+        <h2>{{ a.name.title }} {{ a.name.first }} {{ a.name.last }}</h2>
+        <p>{{ a.email }}</p>
+    </button>
+</ion-list>
+  
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
   </p>

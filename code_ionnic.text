@@ -204,12 +204,75 @@
 4. นำเข้าเพจที่จะให้ลิงค์ไปได้ที่ไฟล์ tabs.ts
     import { HomePage } from '../home/home';
 
+การสร้าง List Avatar จากข้อมูล Json
+1. สร้างฟั่งชันเก็บข้อมูล รัน ionic g provider Avatar
+2. ทำหน้า html เพื่อแสดงค่า 
+<ion-list no-lines >
+    <button ion-item *ngFor="Let a of avatars">
+      <ion-avatar item-start>
+        <img [src]="a.picture.medium">
+      </ion-avatar>
+        <h2>{{ a.name.title }} {{ a.name.first }} {{ a.name.last }}</h2>
+        <p>{{ a.email }}</p>
+    </button>
+</ion-list>
+3.ไปที่ Provider->avatar.ts 
+แก้ไข import 'rxjs/add/operator/map'; เป็น import 'rxjs/add/operator/toPromise';
 
+4. เพิ่ม function 
+  async getAvatar(){
+    const resp = await this.http.get('https://randomuser.me/api/?results=50').toPromise();
+    return resp.json();
+  }
+5. แก้ไขไฟล์ .ts หน้าที่จะแสดง
+    import { AvatarProvider } from '../../providers/avatar/avatar';
+                ...
+    avatars = [];
+                ...
+    constructor(... ,private avatarPovider: AvatarProvider) { }
+                ...
+    ionViewWillEnter(){
+        this.getAvatars();
+    }
+    async getAvatars(){
+        try {
+        this.avatars=[];
+        const resp = await this.avatarPovider.getAvatar();
+        this.avatars = resp.results;  
+        } catch (error) { }
+
+6. เปิดใช้งาน http ที่ app.modules โดยเพิ่ม import { HttpModule  } from '@angular/http';
+7. เพิ่ม ที่ HttpModule ที่ app.modules
+  imports: [
+    ... ,
+    HttpModule,
+    ...,
+  ];
+
+การทำ loading หน้าจอ 
+1. แก้ไฟล์ .ts 
+2. เพิ่มโค้ด ดังนี้
+    import { NavController,AlertController,LoadingController  } from 'ionic-angular';
+    ...
+    constructor( public loadingCtrl: LoadingController) { }
+    ...
+    async getMOdules(){
+    const loading = this.loadingCtrl.create({
+      content: "รอสักครู่...",
+    });
+    try {
+        ...
+        loading.present();
+        ... 
+        loading.dismiss();
+    } catch (error) {
+        loading.dismiss();
+    }
 
 Tip
 -https://www.materialui.co/ เว็บดูเทมเพลดสี
 -https://ionicframework.com/docs/components/ โค้ด ionic 
-
+-https://randomuser.me/documentation#results ตัวอย่างกราฟ
 การแก้ไข cordova-android:
 - npm uninstall -g cordova
 - npm install -g cordovaa

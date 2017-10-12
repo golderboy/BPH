@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, } from 'ionic-angular';
 
 /**
  * Generated class for the DetailPage page.
@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class DetailPage {
 datas : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
     console.log(this.navParams.data);
     this.datas = this.navParams.data;
   }
@@ -24,6 +25,10 @@ datas : any;
     console.log('ionViewDidLoad DetailPage');
   }
 
-  
+ 
 
 }
+
+  
+
+

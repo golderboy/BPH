@@ -14,14 +14,16 @@
 
 
 <ion-content padding>
-
-    <ion-item>
-        <ion-label floating>ชื่อ</ion-label>
-        <ion-input type="text" [value]="datas.name" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>อายุ</ion-label>
-        <ion-input type="number" [value]="datas.age" ></ion-input>
-    </ion-item>
-
+<ion-avatar item-left>
+  <img [src]="datas.picture.medium">
+  <h2>NAME : {{ datas.name.title }} {{ datas.name.first }} {{ datas.name.last }}</h2>
+  <p>EMAIL :  {{ datas.email }}</p>
+</ion-avatar>
+<!--
+<p>ADDRESS :  {{ datas.nalocationme.street }} {{ datas.location.city }} {{ datas.location.state }}</p>
+<p>PHONE :  {{ datas.phone }}  CALL : {{ datas.cell }} </p>
+-->
+<p padding>
+          <button ion-button block><ion-icon name="apps"></ion-icon></button>
+</p>
 </ion-content>

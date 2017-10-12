@@ -10,7 +10,9 @@ import { DetailPageModule } from '../pages/detail/detail.module'; //imd
 import { TabsPageModule  } from '../pages/tabs/tabs.module';
 import { DashbordPageModule } from '../pages/dashbord/dashbord.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
+import { AvatarProvider } from '../providers/avatar/avatar';
 
+import { HttpModule  } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +20,7 @@ import { SettingsPageModule } from '../pages/settings/settings.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     DetailPageModule,
     TabsPageModule,
@@ -32,7 +35,8 @@ import { SettingsPageModule } from '../pages/settings/settings.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AvatarProvider
   ]
 })
 export class AppModule {}
